@@ -1,0 +1,40 @@
+
+#####
+// THIS PUBLIC FUNCTION HANDLES POST NOTIFICATION (expo-PUSH NOTIFICATION) 
+//connects your script to expo-server via CURL 
+
+	public  function sendPushNotification($expoPushToken ) {
+		$message = array(
+			'to' => $expoPushToken,
+			'sound' => 'default',
+			'title' => 'Order Confirmation',
+			'body' => 'THE SO CALLED MESSAGE COMES IN HERE',
+			'data' => array('someData' => 'goes here')
+		);
+
+		$ch = curl_init('https://exp.host/--/api/v2/push/send');
+		curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+		curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+			'Accept: application/json',
+			'Accept-encoding: gzip, deflate',
+			'Content-Type: application/json'
+		));
+		curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($message));
+
+		$response = curl_exec($ch);
+		curl_close($ch);
+
+		// You can optionally return the response if needed.
+		return $response;
+	}
+ ########
+
+
+
+##########
+// YOU Call the function wherever you want to use it...
+$this-> sendPushNotification($pushToken);
+
+
+   
