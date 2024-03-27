@@ -3,6 +3,18 @@ ON Login, in the mobile, pushToken is sent (when the user is asked to allow mobi
 hence a pushToken is sent and saved to the DATABASE against the users ID
 
 
+#####
+Write a function to fetch the pushToken that is saved on the DB, this will be passed on the sendPushNotification () being called
+e.g 
+//fetching pushToken for mobile notification
+private function fetch_token($id){
+	$query = $this->tep_db_query("SELECT pushToken FROM pushToken WHERE userID = '$id'");
+    $result = $this->tep_db_fetch_array($query);
+  return  $result;
+
+}
+
+
 
 #####
 // THIS PUBLIC FUNCTION HANDLES POST NOTIFICATION (expo-PUSH NOTIFICATION) 
@@ -33,7 +45,7 @@ hence a pushToken is sent and saved to the DATABASE against the users ID
 		// You can optionally return the response if needed.
 		return $response;
 	}
- ########
+
 
 
 
