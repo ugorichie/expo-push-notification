@@ -1,3 +1,8 @@
+########3
+ON Login, in the mobile, pushToken is sent (when the user is asked to allow mobile recieve notification)
+hence a pushToken is sent and saved to the DATABASE against the users ID
+
+
 
 #####
 // THIS PUBLIC FUNCTION HANDLES POST NOTIFICATION (expo-PUSH NOTIFICATION) 
@@ -34,6 +39,7 @@
 
 ##########
 // YOU Call the function wherever you want to use it...
+
 $this-> sendPushNotification($pushToken);
 
 
